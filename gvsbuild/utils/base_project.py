@@ -37,7 +37,7 @@ class Options(object):
     def __init__(self):
         # Only the one used by the projects
         self.enable_gi = False
-        self.gtk3_ver = '3.22'
+        self.gtk3_ver = '3.24'
         self.ffmpeg_enable_gpl = False
         # Default
         self._load_python = False
@@ -46,7 +46,7 @@ class Project(object):
     def __init__(self, name, **kwargs):
         object.__init__(self)
         self.name = name
-        self.prj_dir = name 
+        self.prj_dir = name
         self.dependencies = []
         self.patches = []
         self.archive_url = None
@@ -72,7 +72,7 @@ class Project(object):
     name_len = 0
     # List of class/type to add, now not at import time but after some options are parsed
     _reg_prj_list = []
-    # build option 
+    # build option
     opts = Options()
 
     def __str__(self):
@@ -84,7 +84,7 @@ class Project(object):
     def load_defaults(self):
         # Used by the tools to load default paths/filenames
         pass
-    
+
     def finalize_dep(self, builder, deps):
         """
         Used to manipulate the dependencies list, to add or remove projects
@@ -100,7 +100,7 @@ class Project(object):
 
     def add_dependency(self, dep):
         self.dependencies.append(dep)
-        
+
     def exec_cmd(self, cmd, working_dir=None, add_path=None):
         self.builder.exec_cmd(cmd, working_dir=working_dir, add_path=add_path)
 
@@ -115,7 +115,7 @@ class Project(object):
     def exec_msbuild_gen(self, base_dir, sln_file, add_pars='', configuration=None, add_path=None):
         '''
         looks for base_dir\{vs_ver}\sln_file or base_dir\{vs_ver_tear}\sln_file for launching the msbuild commamd.
-        If it's not present in the directory the system start to look backward to find the first version present 
+        If it's not present in the directory the system start to look backward to find the first version present
         '''
         def _msbuild_ok(self, dir_part):
             print(self.build_dir, base_dir, dir_part, sln_file, sep='\n')
@@ -130,7 +130,7 @@ class Project(object):
 
         if not part:
             look = {
-                '12': [], 
+                '12': [],
                 '14': [ 'vs12', 'vs2013', ],
                 '15': [ 'vs14', 'vs2015', 'vs12', 'vs2013', ],
                 '16': [ 'vs15', 'vs2017', 'vs14', 'vs2015', 'vs12', 'vs2013', ],
@@ -228,11 +228,11 @@ class Project(object):
         Register the class to be added after some initialization
         """
         Project._reg_prj_list.append((cls, ty, ))
-        
+
     @staticmethod
     def add_all():
         """
-        Add all the registered class 
+        Add all the registered class
         """
         for cls, ty in Project._reg_prj_list:
             c_inst = cls()
@@ -247,7 +247,7 @@ class Project(object):
         Mark the project not to build/add to the list
         """
         self.to_add = False
-         
+
     @staticmethod
     def get_project(name):
         return Project._dict[name]
@@ -282,7 +282,7 @@ class Project(object):
     def get_tool_executable(tool):
         if not isinstance(tool, Project):
             tool = Project._dict[tool]
-            
+
         if tool.type == GVSBUILD_TOOL:
             return tool.get_executable()
         return None
@@ -291,7 +291,7 @@ class Project(object):
     def get_tool_base_dir(tool):
         if not isinstance(tool, Project):
             tool = Project._dict[tool]
-            
+
         if tool.type == GVSBUILD_TOOL:
             return tool.get_base_dir()
         return None
@@ -314,7 +314,7 @@ class Project(object):
                 re.compile('.*-([0-9a-f]+)\.'),
                 re.compile('.*([0-9]\.[0-9]+)\.'),
                 ]
-        
+
         ver = ''
         for r in Project._ver_res:
             ok = r.match(file_name)
@@ -323,7 +323,7 @@ class Project(object):
                 break
         log.debug('Version from file name:%-16s <- %s' % (ver, file_name, ))
         return ver
-            
+
     def _calc_version(self):
         if self.archive_file_name:
             self.version = Project._file_to_version(self.archive_file_name)
@@ -332,21 +332,21 @@ class Project(object):
             self.version = Project._file_to_version(name)
         else:
             if hasattr(self, 'tag') and self.tag:
-                self.version = 'git/' + self.tag 
+                self.version = 'git/' + self.tag
             elif hasattr(self, 'repo_url'):
                 self.version = 'git/master'
             else:
                 self.version = ''
-    
+
     def mark_file_calc(self):
         if not self.mark_file:
             self.mark_file = os.path.join(self.build_dir, '.wingtk-built')
-            
+
     def mark_file_remove(self):
         self.mark_file_calc()
         if os.path.isfile(self.mark_file):
             os.remove(self.mark_file)
-            
+
     def mark_file_write(self):
         self.mark_file_calc()
         try:
@@ -355,7 +355,7 @@ class Project(object):
                 fo.write('%s\n' % (now.strftime('%Y-%m-%d %H:%M:%S'), ))
         except FileNotFoundError as e:
             log.debug("Exception writing file '%s' (%s)" % (self.mark_file, e, ))
-        
+
     def mark_file_exist(self):
         rt = None
         self.mark_file_calc()
