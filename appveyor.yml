@@ -8,7 +8,7 @@ environment:
     DOWNLOAD_DIR: _download_cache
     APPVEYOR_SAVE_CACHE_ON_ERROR: true
     PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd
-    PYTHON: C:\Python37\python.exe
+    PYTHON: C:\Python38\python.exe
   matrix:
     #~ - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       #~ VS_VER: "15"
@@ -24,7 +24,8 @@ environment:
       PLATFORM: "x64"
 
 build_script:
-  - "%PYTHON% build.py build --archives-download-dir=%DOWNLOAD_DIR% --platform=%PLATFORM% --vs-ver=%VS_VER% -k --enable-gi --py-wheel --py-egg --python-ver 3.7 enchant gtk gtk3-full pycairo pygobject lz4 --skip gtksourceview3,emeus,clutter"
+  - "%PYTHON% build.py build --archives-download-dir=%DOWNLOAD_DIR% --platform=%PLATFORM% --vs-ver=%VS_VER% -k --enable-gi --py-wheel --py-egg --python-ver 3.8 enchant gtk gtk3-full pycairo pygobject lz4 --skip gtksourceview3,emeus,clutter"
+  - "%PYTHON% build.py build --archives-download-dir=%DOWNLOAD_DIR% --platform=%PLATFORM% --vs-ver=%VS_VER% -k --fast-build --clean-built --py-wheel --py-egg --python-ver 3.7 pycairo pygobject"
   - "%PYTHON% build.py build --archives-download-dir=%DOWNLOAD_DIR% --platform=%PLATFORM% --vs-ver=%VS_VER% -k --fast-build --clean-built --py-wheel --py-egg --python-ver 3.6 pycairo pygobject"
   - "%PYTHON% build.py build --archives-download-dir=%DOWNLOAD_DIR% --platform=%PLATFORM% --vs-ver=%VS_VER% -k --fast-build --clean-built --py-wheel --py-egg --python-ver 3.5 pycairo pygobject"
   - set PATH=%PATH%;C:\msys64\usr\bin
