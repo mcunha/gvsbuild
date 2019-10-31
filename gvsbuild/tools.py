@@ -33,9 +33,9 @@ class Tool_cmake(Tool):
     def __init__(self):
         Tool.__init__(self,
             'cmake',
-            archive_url = 'https://cmake.org/files/v3.7/cmake-3.7.2-win64-x64.zip',
-            hash = 'def3bb81dfd922ce1ea2a0647645eefb60e128d520c8ca707c5996c331bc8b48',
-            dir_part = 'cmake-3.7.2-win64-x64')
+            archive_url = 'https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-win64-x64.zip',
+            hash = '973f83503d5e79eafc10446b3cdaf70d5089eb001d72e995df2b22b66800aeb7',
+            dir_part = 'cmake-3.15.5-win64-x64')
 
     def load_defaults(self):
         Tool.load_defaults(self)
