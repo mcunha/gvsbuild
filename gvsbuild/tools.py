@@ -82,9 +82,9 @@ class Tool_nasm(Tool):
     def __init__(self):
         Tool.__init__(self,
             'nasm',
-            archive_url = 'https://www.nasm.us/pub/nasm/releasebuilds/2.13.03/win64/nasm-2.13.03-win64.zip',
-            hash = 'b3a1f896b53d07854884c2e0d6be7defba7ebd09b864bbb9e6d69ada1c3e989f',
-            dir_part = 'nasm-2.13.03',
+            archive_url = 'https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip',
+            hash = '18918ac906e29417b936466e7a2517068206c8db8c04b9762a5befa18bfea5f0',
+            dir_part = 'nasm-2.14.02',
             exe_name = 'nasm.exe')
 
     def unpack(self):
@@ -110,10 +110,10 @@ class Tool_nuget(Tool):
     def __init__(self):
         Tool.__init__(self,
             'nuget',
-            archive_url = 'https://dist.nuget.org/win-x86-commandline/v4.9.4/nuget.exe',
-            archive_file_name = 'nuget-4.9.4.exe',
-            hash = 'cb139d855d06d07e7da892e8558fe16dcaa65cb381175c506f5ed0a759eaf8f6',
-            dir_part = 'nuget-4.9.4',
+            archive_url = 'https://dist.nuget.org/win-x86-commandline/v5.3.1/nuget.exe',
+            archive_file_name = 'nuget-5.3.1.exe',
+            hash = 'e3e46eb415561c778a7fdec7194bca9811c6e7f4066cc8cc85244c391b969c11',
+            dir_part = 'nuget-5.3.1',
             exe_name = 'nuget.exe')
 
     def unpack(self):
