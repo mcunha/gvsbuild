@@ -159,11 +159,11 @@ class Tool_python(Tool):
         version = self.opts.python_ver;
         # Get the last version we ask
         if version == '3.5':
-            version = '3.5.7'
+            version = '3.5.4'
         elif version == '3.6':
-            version = '3.6.9'
+            version = '3.6.8'
         elif version == '3.7':
-            version = '3.7.17'
+            version = '3.7.5'
         elif version == '3.8':
             version = '3.8.0'
 
