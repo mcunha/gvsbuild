@@ -96,10 +96,10 @@ class Tool_ninja(Tool):
     def __init__(self):
         Tool.__init__(self,
             'ninja',
-            archive_url = 'https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-win.zip',
-            archive_file_name = 'ninja-win-1.8.2.zip',
-            hash = 'c80313e6c26c0b9e0c241504718e2d8bbc2798b73429933adf03fdc6d84f0e70',
-            dir_part = 'ninja-1.8.2',
+            archive_url = 'https://github.com/ninja-build/ninja/releases/download/v1.9.0/ninja-win.zip',
+            archive_file_name = 'ninja-win-1.9.0.zip',
+            hash = '2d70010633ddaacc3af4ffbd21e22fae90d158674a09e132e06424ba3ab036e9',
+            dir_part = 'ninja-1.9.0',
             exe_name = 'ninja.exe')
 
     def unpack(self):
